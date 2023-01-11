@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 @Component({
@@ -6,8 +6,15 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './link-page.component.html',
   styleUrls: ['./link-page.component.sass']
 })
-export class LinkPageComponent {
+export class LinkPageComponent implements OnInit{
 listOfValues:any;
+bank:any;
+//sessionStorage.getItem("lastname");
+ngOnInit() {
+this.bank=sessionStorage.getItem("username");
+
+
+}
 constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,

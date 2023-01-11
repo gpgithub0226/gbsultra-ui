@@ -11,6 +11,12 @@
       <div class="icon-div">
       <i class="fa fa-calendar"></i>  01-12-1995</div>
       <div class="icon-div"><i class="fa fa-user"></i> Hi,Gandhi</div>
+      <div class="icon-div">
+        <img style="width:100px;height:auto" *ngIf="bank=='icici'" src="https://www.icicibank.com/content/dam/icicibank/india/assets/images/header/logo.png" class="logo-link">
+        <img style="width:100px;height:auto" *ngIf="bank=='kotak'" src="http://t3.gstatic.com/images?q=tbn:ANd9GcSIseb1KlbTOP6iv6QQU6TeDob3hh58QkOp7GJgQvBRbZsxoM4S" class="logo-link">
+        <img style="width:120px;height:auto" *ngIf="bank=='hdfc'" src="https://1000logos.net/wp-content/uploads/2021/06/HDFC-Bank-logo-768x432.png" class="logo-link">
+
+      </div>
     </div>
 
   </div>
@@ -76,6 +82,9 @@
     margin-top: 2%;
     color: #d01c23;" *ngIf="this.listOfValues">
   <div class="row">
+    <div class="col-lg-12">
+      <h5>{{this.listOfValues[0].heading}}</h5>
+    </div>
     <div class="col-lg-12">
       <ul>
         <li class="li-own" *ngFor="let item of this.listOfValues;" ><a routerLink="/test"  (click)="x=item.param;" [queryParams]=
