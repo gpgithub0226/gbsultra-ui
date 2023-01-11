@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import{LoginService} from '../service/login.service';
 @Component({
   selector: 'app-login-page',
@@ -6,7 +7,7 @@ import{LoginService} from '../service/login.service';
   styleUrls: ['./login-page.component.sass']
 })
 export class LoginPageComponent implements OnInit {
-constructor(private dataService: LoginService) { }
+constructor(private dataService: LoginService,private router:Router) { }
 //
 // user1 = [];
 // user = [];
@@ -25,10 +26,11 @@ ngOnInit() {
 // }
 user:any;
 
-get_data() {
-alert();
+login() {
+//alert();
   this.dataService.getUsers1().subscribe((data: any) => this.user = data);
-  console.log(this.user);
+  //console.log(this.user);
+  this.router.navigate(['/linkPage']);
 }
 
 }
