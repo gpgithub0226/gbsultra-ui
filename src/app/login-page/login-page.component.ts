@@ -10,17 +10,20 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginPageComponent implements OnInit {
 constructor(private dataService: LoginService,private router:Router) { }
 
+
 ngOnInit() {
 
 }
 username:any;
 password:any;
 user:any;
-
+ res:any;
+authRequest:any;
 get_data() {
 if(this.username == 'icici'|| this.username == 'kotak'  || this.username == 'hdfc')
 {
   this.dataService.getUsers1().subscribe((data: any) => this.user = data);
+  
  sessionStorage.setItem("username", this.username);
  sessionStorage.setItem("password", this.password);
 
@@ -28,4 +31,25 @@ if(this.username == 'icici'|| this.username == 'kotak'  || this.username == 'hdf
   }
 }
 
+login () {
+  this.authRequest={
+    "userName":this.username,
+    "password":this.password
+
+
+  }
+ 
+// this.res=this.dataService.login(this.authRequest);
+
+this.res=  this.dataService.login(this.authRequest).subscribe((data: any) => this.user = data);
+console.log("this.res.error");
+console.log(this.res.HttpErrorResponse );
+if(this.res == 'S'){
+
+
+  this.router.navigate([`/linkPage`]);
+}else{
+  alert("Inavalid user Name/Password"+this.res)
 }
+
+}}

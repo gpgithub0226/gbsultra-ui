@@ -6,6 +6,9 @@ import{HttpClient} from '@angular/common/http';
 export class LoginService {
 apiUrl = 'https://10.54.6.34:7002/gbsultra/gbmultra/user/login';
 apiUrl1 = 'https://10.54.6.34:7002/gbsultra/gbmultra/user/login';
+loginUrllocal="https://gbs-api-project-375012.de.r.appspot.com/login";
+getusers="https://jsonplaceholder.typicode.com/posts";
+loginUrllocal1="http://localhost:8080/login";
 data={
        "username": "LOKESH",
        "password": "Hq3EZAhbFjBA+8U7LEwA1Q==",
@@ -27,6 +30,15 @@ return   this.http.post<any>(this.apiUrl, {
                                           });
 }
 getUsers() {
-  return this.http.get(this.apiUrl1);
+alert("get users");
+
+  return this.http.get(this.getusers);
+}
+
+login(request:any){
+
+console.log(this.loginUrllocal );
+  //return this.http.post(this.loginUrl,request);
+  return this.http.post(this.loginUrllocal,request);
 }
 }
