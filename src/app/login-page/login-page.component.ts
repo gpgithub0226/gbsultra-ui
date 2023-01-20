@@ -41,15 +41,21 @@ login () {
  
 // this.res=this.dataService.login(this.authRequest);
 
-this.res=  this.dataService.login(this.authRequest).subscribe((data: any) => this.user = data);
-console.log("this.res.error");
-console.log(this.res.HttpErrorResponse );
-if(this.res == 'S'){
+  this.dataService.login(this.authRequest).subscribe(
+
+  data=>{
+    this.res=data
+    if(this.res.status == 'S'){
 
 
-  this.router.navigate([`/linkPage`]);
-}else{
-  alert("Inavalid user Name/Password"+this.res)
-}
+      this.router.navigate([`/linkPage`]);
+    }else{
+      alert("Inavalid user Name/Password...."+this.res.desc)
+    }
+   
+  }
+);
+
+
 
 }}
